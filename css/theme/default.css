@@ -12,8 +12,8 @@
 }
 
 .feedback-queue-single {
-  transition: all /*var(--animation-duration)*/;
-  animation-duration: /*var(--animation-duration)*/;
+  transition: all var(--animation-duration);
+  animation-duration: var(--animation-duration);
   animation-fill-mode: forwards;
   animation-name: fadeInTop;
   background-color: white;
@@ -51,25 +51,25 @@
 }
 
 .feedback-queue-single.is-success {
-  background-color: /*var(--color-primary-0)*/;
+  background-color: var(--color-primary-0);
 }
 
 .feedback-queue-single.is-success:hover {
-  background-color: color(/*var(--color-primary-0)*/ tint(2%));
+  background-color: color(var(--color-primary-0) tint(2%));
 }
 
 .feedback-queue-single.is-success:active {
-  background-color: color(/*var(--color-primary-0)*/ shade(2%));
+  background-color: color(var(--color-primary-0) shade(2%));
 }
 
 .feedback-queue-single.is-fail {
-  background-color: /*var(--color-primary-1)*/;
+  background-color: var(--color-primary-1);
 }
 
 .feedback-queue-single.is-fail:hover {
-  background-color: color(/*var(--color-primary-1)*/ tint(2%));
+  background-color: color(var(--color-primary-1) tint(2%));
 }
 
 .feedback-queue-single.is-fail:active {
-  background-color: color(/*var(--color-primary-1)*/ shade(2%));
+  background-color: color(var(--color-primary-1) shade(2%));
 }

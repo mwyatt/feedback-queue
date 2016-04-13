@@ -1,6 +1,6 @@
 var $ = require('jquery');
 var mustache = require('mustache');
-var getMotionEventName = require('./utility/getMotionEventName');
+var getMotionEventName = require('./getMotionEventName');
 var $document = $(document);
 
 /**
@@ -81,4 +81,4 @@ FeedbackQueue.prototype.removeAfterAnimation = function(data, trigger) {
   });
 };
 
-module.exports = new FeedbackQueue();
+module.exports = FeedbackQueue;
