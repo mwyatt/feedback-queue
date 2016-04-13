@@ -81,4 +81,4 @@ FeedbackQueue.prototype.removeAfterAnimation = function(data, trigger) {
   });
 };
 
-module.exports = FeedbackQueue;
+module.exports = new FeedbackQueue();

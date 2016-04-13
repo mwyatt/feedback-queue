@@ -1,0 +1,75 @@
+.feedback-queue {
+  position: relative;
+}
+
+.feedback-queue-position {
+  position: fixed;
+  left: 50%;
+  width: 40%;
+  margin-left: -20%;
+  top: 2em;
+  z-index: 9999;
+}
+
+.feedback-queue-single {
+  transition: all /*var(--animation-duration)*/;
+  animation-duration: /*var(--animation-duration)*/;
+  animation-fill-mode: forwards;
+  animation-name: fadeInTop;
+  background-color: white;
+  color: white;
+  padding: 0.8em;
+  cursor: pointer;
+  margin: 1em 0;
+  background-color: #666666;
+}
+
+.feedback-queue-single:hover {
+  opacity: 0.8;
+  background-color: color(#666666 tint(2%));
+}
+
+.feedback-queue-single:active {
+  transform: scale(0.8);
+  background-color: color(#666666 shade(2%));
+}
+
+.feedback-queue-single.is-removed {
+  animation-name: fadeOutTop;
+}
+
+.feedback-queue-single-cross {
+  width: 41px;
+  height: 41px;
+  padding: 15px 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.6em;
+  line-height: 0.5;
+  text-align: center;
+}
+
+.feedback-queue-single.is-success {
+  background-color: /*var(--color-primary-0)*/;
+}
+
+.feedback-queue-single.is-success:hover {
+  background-color: color(/*var(--color-primary-0)*/ tint(2%));
+}
+
+.feedback-queue-single.is-success:active {
+  background-color: color(/*var(--color-primary-0)*/ shade(2%));
+}
+
+.feedback-queue-single.is-fail {
+  background-color: /*var(--color-primary-1)*/;
+}
+
+.feedback-queue-single.is-fail:hover {
+  background-color: color(/*var(--color-primary-1)*/ tint(2%));
+}
+
+.feedback-queue-single.is-fail:active {
+  background-color: color(/*var(--color-primary-1)*/ shade(2%));
+}
