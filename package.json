@@ -1,11 +1,11 @@
 {
-  "name": "feedback-queue",
+  "name": "mwyatt-feedback-queue",
   "author": "Martin Wyatt <martin.wyatt@gmail.com>",
   "description": "accepts feedback messages and displays them briefly. multiple messages will be stacked on top of eachother.",
-  "version": "1.0.2",
+  "version": "0.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mwyatt/codex.git"
+    "url": "git+https://github.com/mwyatt/feedback-queue.git"
   },
   "license": "ISC",
   "dependencies": {
