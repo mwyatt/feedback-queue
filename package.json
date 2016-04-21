@@ -2,7 +2,7 @@
   "name": "mwyatt-feedback-queue",
   "author": "Martin Wyatt <martin.wyatt@gmail.com>",
   "description": "accepts feedback messages and displays them briefly. multiple messages will be stacked on top of eachother.",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mwyatt/feedback-queue.git"
