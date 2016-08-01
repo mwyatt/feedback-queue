@@ -21,10 +21,8 @@ function getContainer() {
   return container;
 }
 
-FeedbackQueue.prototype.createMessage = function(message) {
-  return this.create({
-    message: message
-  })
+FeedbackQueue.prototype.createMessage = function(options) {
+  this.create(options);
 };
 
 FeedbackQueue.prototype.create = function(options) {
