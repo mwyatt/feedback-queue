@@ -1,27 +1,31 @@
 var mustache = require('mustache');
 var extend = require('extend');
 
-var getMotionEventName = require('./getMotionEventName');
+var FeedbackQueue = function() {};
 var container;
 var body = document.querySelector('body');
 var containerTemplate = require('./container.mustache');
 var singleTemplate = require('./single.mustache');
 
 /**
- * accepts a message and displays appropriatly, stacks
- * them on top of one another, then fades away after a period of time
- * @param {object} options
+ * create and or return dom node
  */
-var FeedbackQueue = function(options) {
-
-};
-
 function getContainer() {
-  if (!container) {
-    container = document.querySelector('.js-feedback-queue');
+
+  if (container) {
+    return container;
   }
+
+  body.insertAdjacentHTML('afterbegin', mustache.render(containerTemplate));
+  container = document.querySelector('.js-feedback-queue');
   return container;
 }
+
+FeedbackQueue.prototype.createMessage = function(message) {
+  return this.create({
+    message: message
+  })
+};
 
 FeedbackQueue.prototype.create = function(options) {
   var optionsTemplate = {
@@ -30,54 +34,32 @@ FeedbackQueue.prototype.create = function(options) {
     life: 5000 // how long will it last?
   };
   extend(optionsTemplate, options);
-  this.options = optionsTemplate;
-
-  var theContainer = getContainer();
-
-  // render container if not already
-  if (!theContainer) {
-    body.insertAdjacentHTML('afterbegin', mustache.render(this.options.templateContainer));
-  };
-
-  if (!options.hasOwnProperty('message')) {
-    return console.warn('FeedbackQueue.createMessage', 'options must have \'message\' property');
-  };
+  options = optionsTemplate;
 
   // default type
   if (!options.hasOwnProperty('type')) {
     options.type = 'neutral';
   };
+
+  // message property present but just empty
   if (!options.message) {
     return;
   };
 
-  // resources
-  var newElement;
-  var data = this;
-
   // render
-  newElement = $(mustache.render(data.options.templateSingle, options));
-  $('.js-feedback-queue-position').prepend(newElement);
+  var theContainer = getContainer();
+  theContainer.insertAdjacentHTML('afterbegin', mustache.render(singleTemplate, options));
+
+  var singleMessage = theContainer.querySelector('.js-feedback-queue-single');
 
   // timeout for removal
   setTimeout(function() {
-    newElement.addClass('is-removed');
-    data.removeAfterAnimation(data, newElement);
-  }, data.options.life);
+    singleMessage.remove();
+  }, options.life);
 
   // click message to remove
-  newElement.on('click.feedback-stream', function() {
-    newElement.addClass('is-removed');
-    data.removeAfterAnimation(data, newElement);
-  });
-};
-
-/**
- * remove the queue item when its time up!
- */
-FeedbackQueue.prototype.removeAfterAnimation = function(data, trigger) {
-  trigger.on(getMotionEventName('animation'), function() {
-    trigger.remove();
+  singleMessage.addEventListener('click', function() {
+    this.remove();
   });
 };
 
