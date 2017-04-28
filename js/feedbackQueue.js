@@ -46,7 +46,8 @@ FeedbackQueue.prototype.create = function(options) {
 
   // render
   var theContainer = getContainer();
-  theContainer.insertAdjacentHTML('afterbegin', mustache.render(singleTemplate, options));
+  var containerInner = theContainer.querySelector('.js-feedback-queue-position')
+  containerInner.insertAdjacentHTML('afterbegin', mustache.render(singleTemplate, options));
 
   var singleMessage = theContainer.querySelector('.js-feedback-queue-single');
 
